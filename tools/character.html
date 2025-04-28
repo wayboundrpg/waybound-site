@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Waybound - [Character Sheet]</title>
-  <link rel="stylesheet" href="../styles/main.css">
-  <script src="../scripts/shared.js" defer></script>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-brand">Waybound</div>
-            <ul class="nav-links">
-              <li><a href="/index.html">Home</a></li>
-              <li><a href="/tools/dice.html">Dice Roller</a></li>
-              <li><a href="/tools/character.html">Character Sheets</a></li>
-              <li><a href="/tools/campaigns.html">Campaigns</a></li>
-              <li><a href="/tools/wiki.html">Wiki</a></li>
-            </ul>
-          </nav>
-          
-      </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character Creator – Waybound RPG</title>
+  
+    <!-- Tailwind CDN + class‐based dark mode -->
+    <script>
+      tailwind.config = { darkMode: 'class' }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- NAVBAR -->
+    <header class="bg-gray-900 dark:bg-gray-800 text-white">
+      <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="index.html" class="text-2xl font-bold whitespace-nowrap">Waybound</a>
+        <ul id="navMenu" class="hidden md:flex space-x-8 list-none whitespace-nowrap">
+          <!-- same links… -->
+        </ul>
+        <button id="navToggle" class="md:hidden p-2 rounded focus:outline-none">…</button>
+        <button id="themeToggle" class="ml-4 p-2 rounded focus:outline-none bg-gray-700 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500" aria-label="Toggle dark mode">🌙</button>
+      </div>
+      <div id="mobileMenu" class="md:hidden bg-gray-800 hidden">
+        <!-- mobile links… -->
+      </div>
+    </header>
+  
       
 
       <main class="page-container">
@@ -34,10 +41,14 @@
         </section>
       </main>
       
-
-  <footer class="site-footer">
-    <p>Waybound RPG © 2025. All rights reserved.</p>
-  </footer>
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6 mt-8">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <p>Waybound RPG © 2025. All rights reserved.</p>
+      </div>
+    </footer>
   
-</body>
-</html>
+    <script src="scripts/shared.js"></script>
+  </body>
+  </html>
+  
