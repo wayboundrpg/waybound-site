@@ -101,4 +101,35 @@ body {
     50%  { transform: translateY(10px); }
     100% { transform: translateY(0); }
   }
+  /* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    border-bottom: 2px solid #4f46e5;
+  }
+  
+  .nav-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .nav-links li a:hover {
+    color: #4f46e5;
+  }
   
