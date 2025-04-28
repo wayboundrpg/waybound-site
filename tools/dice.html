@@ -14,7 +14,7 @@
   </header>
 
   <main class="dice-roller-container">
-    <div class="dice-selection">
+    <section class="dice-selection">
       <button data-dice="4">D4</button>
       <button data-dice="6">D6</button>
       <button data-dice="8">D8</button>
@@ -22,20 +22,21 @@
       <button data-dice="12">D12</button>
       <button data-dice="20" class="active">D20</button>
       <button data-dice="100">D100</button>
-    </div>
+    </section>
 
-    <div class="roll-button-container">
-      <button id="roll-button">Roll!</button>
-    </div>
+    <section class="roll-action">
+      <button id="roll-button">🎲 Roll the Dice!</button>
+    </section>
 
-    <div id="result-display">🎲</div>
+    <section id="result-display" class="result-display">
+      🎲
+    </section>
 
-    <div class="history-container">
+    <section class="history-section">
       <h2>Roll History</h2>
       <ul id="roll-history"></ul>
-      <button id="clear-history">Clear History</button>
-    </div>
+      <button id="clear-history" class="clear-button">🧹 Clear History</button>
+    </section>
   </main>
-
 </body>
 </html>
