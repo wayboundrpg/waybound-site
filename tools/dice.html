@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waybound - Dice Roller</title>
-    <link rel="stylesheet" href="../styles/main.css">
-    <script src="../scripts/shared.js" defer></script>
-    <script src="../scripts/dice.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waybound - Dice Roller</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <script src="../scripts/shared.js" defer></script>
+  <script src="../scripts/dice.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Waybound Dice Roller</h1>
-    </header>
-    <main class="dice-roller-container">
-        <div class="dice-selection">
-            <button data-dice="4">D4</button>
-            <button data-dice="6">D6</button>
-            <button data-dice="8">D8</button>
-            <button data-dice="10">D10</button>
-            <button data-dice="12">D12</button>
-            <button data-dice="20" class="active">D20</button>
-            <button data-dice="100">D100</button>
-        </div>
-        <div class="roll-button-container">
-            <button id="roll-button">Roll!</button>
-        </div>
-        <div id="result-display">🎲</div>
-        <div class="history-container">
-            <h2>Roll History</h2>
-            <ul id="roll-history"></ul>
-            <button id="clear-history">Clear History</button>
-        </div>
-    </main>
-    <script src="../scripts/dice.js" defer></script>
+  <header>
+    <h1>Waybound Dice Roller</h1>
+  </header>
+
+  <main class="dice-roller-container">
+    <div class="dice-selection">
+      <button data-dice="4">D4</button>
+      <button data-dice="6">D6</button>
+      <button data-dice="8">D8</button>
+      <button data-dice="10">D10</button>
+      <button data-dice="12">D12</button>
+      <button data-dice="20" class="active">D20</button>
+      <button data-dice="100">D100</button>
+    </div>
+
+    <div class="roll-button-container">
+      <button id="roll-button">Roll!</button>
+    </div>
+
+    <div id="result-display">🎲</div>
+
+    <div class="history-container">
+      <h2>Roll History</h2>
+      <ul id="roll-history"></ul>
+      <button id="clear-history">Clear History</button>
+    </div>
+  </main>
+
 </body>
 </html>
