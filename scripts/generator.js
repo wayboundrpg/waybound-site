@@ -32,10 +32,10 @@ async function fetchJson(path) {
   
     // Fetch common pools
     const [names, sexes, races, traits] = await Promise.all([
-      fetchJson('../data/names.json'),
-      fetchJson('../data/sexes.json'),
-      fetchJson('../data/races.json'),
-      fetchJson('../data/traits.json'),
+        fetchJson('/data/names.json'),
+        fetchJson('/data/sexes.json'),
+        fetchJson('/data/races.json'),
+        fetchJson('/data/traits.json'),
     ]);
   
     // General pages
@@ -64,17 +64,17 @@ async function fetchJson(path) {
       hair, eyes, clothing,
       hooks, hdice, scores
     ] = await Promise.all([
-      fetchJson('../data/classes.json'),
-      fetchJson('../data/backgrounds.json'),
-      fetchJson('../data/ideals.json'),
-      fetchJson('../data/bonds.json'),
-      fetchJson('../data/flaws.json'),
-      fetchJson('../data/hair.json'),
-      fetchJson('../data/eyes.json'),
-      fetchJson('../data/clothing.json'),
-      fetchJson('../data/hooks.json'),
-      fetchJson('../data/hit-dice.json'),
-      fetchJson('../data/ability-scores.json'),
+        fetchJson('/data/classes.json'),
+        fetchJson('/data/backgrounds.json'),
+        fetchJson('/data/ideals.json'),
+        fetchJson('/data/bonds.json'),
+        fetchJson('/data/flaws.json'),
+        fetchJson('/data/hair.json'),
+        fetchJson('/data/eyes.json'),
+        fetchJson('/data/clothing.json'),
+        fetchJson('/data/hooks.json'),
+        fetchJson('/data/hit-dice.json'),
+        fetchJson('/data/ability-scores.json'),
     ]);
   
     // Populate advanced dropdowns
