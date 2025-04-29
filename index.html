@@ -5,13 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Waybound RPG</title>
 
-  <!-- Configure Tailwind to use class-based dark mode -->
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-    }
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class'}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -23,14 +19,10 @@
 
       <!-- Desktop links -->
       <ul id="navMenu" class="hidden md:flex space-x-8 list-none whitespace-nowrap">
-        <li><a href="dice.html" class="hover:underline">Dice Roller</a></li>
-        <li><a href="character.html" class="hover:underline">Character</a></li>
-        <li><a href="campaigns.html" class="hover:underline">Campaigns</a></li>
-        <li><a href="wiki.html" class="hover:underline">Wiki</a></li>
-        <li><a href="journal.html" class="hover:underline">Journal</a></li>
-        <li><a href="name.html" class="hover:underline">Name Generator</a></li>
-        <li><a href="npc.html" class="hover:underline">NPCs</a></li>
+        <li><a href="index.html" class="hover:underline">Home</a></li>
+        <li><a href="tools/npc.html" class="hover:underline">NPC Generator</a></li>
       </ul>
+      
 
       <!-- Mobile: hamburger -->
       <button id="navToggle" class="md:hidden p-2 rounded focus:outline-none">
@@ -53,14 +45,9 @@
     <!-- Mobile links (hidden by default) -->
     <div id="mobileMenu" class="md:hidden bg-gray-800 hidden">
       <ul class="flex flex-col space-y-2 p-4">
-        <li><a href="dice.html" class="text-white hover:underline">Dice Roller</a></li>
-        <li><a href="character.html" class="text-white hover:underline">Character</a></li>
-        <li><a href="campaigns.html" class="text-white hover:underline">Campaigns</a></li>
-        <li><a href="wiki.html" class="text-white hover:underline">Wiki</a></li>
-        <li><a href="journal.html" class="text-white hover:underline">Journal</a></li>
-        <li><a href="name.html" class="text-white hover:underline">Name Generator</a></li>
-        <li><a href="npc.html" class="text-white hover:underline">NPCs</a></li>
-      </ul>
+        <li><a href="../index.html"      class="text-white hover:underline">Home</a></li>
+        <li><a href="../tools/npc.html"  class="text-white hover:underline">NPC Generator</a></li>
+      </ul>      
     </div>
   </header>
 
@@ -73,74 +60,15 @@
       </p>
     </section>
 
-    <!-- TOOLS GRID -->
-    <section class="max-w-screen-xl mx-auto px-4 py-12 bg-white dark:bg-gray-800">
-      <h2 class="text-3xl font-bold mb-8 text-center dark:text-white">Explore Our Tools</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Dice Roller -->
-        <a href="dice.html"
-           class="block bg-white dark:bg-gray-700 shadow-md dark:shadow-none rounded-lg p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2 dark:text-white">Dice Roller</h3>
-          <p class="text-gray-600 dark:text-gray-300">
-            Roll any combination of dice with history and animations.
-          </p>
-        </a>
-
-        <!-- Character Creator -->
-        <a href="character.html"
-           class="block bg-white dark:bg-gray-700 shadow-md dark:shadow-none rounded-lg p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2 dark:text-white">Character Creator</h3>
-          <p class="text-gray-600 dark:text-gray-300">
-            Step-by-step wizard to build and save your characters.
-          </p>
-        </a>
-
-        <!-- Campaigns -->
-        <a href="campaigns.html"
-           class="block bg-white dark:bg-gray-700 shadow-md dark:shadow-none rounded-lg p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2 dark:text-white">Campaigns</h3>
-          <p class="text-gray-600 dark:text-gray-300">
-            Organize and manage all your game worlds in one place.
-          </p>
-        </a>
-
-        <!-- Wiki -->
-        <a href="wiki.html"
-           class="block bg-white dark:bg-gray-700 shadow-md dark:shadow-none rounded-lg p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2 dark:text-white">Wiki</h3>
-          <p class="text-gray-600 dark:text-gray-300">
-            Create and browse lore entries with markdown support.
-          </p>
-        </a>
-
-        <!-- Journal -->
-        <a href="journal.html"
-           class="block bg-white dark:bg-gray-700 shadow-md dark:shadow-none rounded-lg p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2 dark:text-white">Journal</h3>
-          <p class="text-gray-600 dark:text-gray-300">
-            Keep session notes and logs for your adventures.
-          </p>
-        </a>
-
-        <!-- Name Generator -->
-        <a href="name.html"
-           class="block bg-white dark:bg-gray-700 shadow-md dark:shadow-none rounded-lg p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2 dark:text-white">Name Generator</h3>
-          <p class="text-gray-600 dark:text-gray-300">
-            Generate fantasy names for characters, places, and treasures.
-          </p>
-        </a>
-
-        <!-- NPCs -->
-        <a href="npc.html"
-           class="block bg-white dark:bg-gray-700 shadow-md dark:shadow-none rounded-lg p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2 dark:text-white">NPCs</h3>
-          <p class="text-gray-600 dark:text-gray-300">
-            Quickly create non-player characters with traits and backstories.
-          </p>
-        </a>
-      </div>
+    <!-- NPC Generator-->
+    <section class="max-w-screen-xl mx-auto px-4 py-12 bg-white dark:bg-gray-800 text-center">
+      <h2 class="text-3xl font-bold mb-6 dark:text-white">Jump into the NPC Generator</h2>
+      <a href="tools/npc.html"
+         class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition">
+        Launch NPC Generator →
+      </a>
     </section>
+    
 
     <!-- FOOTER -->
     <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6 mt-8">
