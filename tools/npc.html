@@ -1,77 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NPC Generator - Waybound</title>
-    <script>tailwind.config={darkMode:'class'}</script>
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPC Generator – Waybound</title>
 
+  <!-- Tailwind CDN + class‐based dark mode -->
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <!-- NAVBAR -->
   <header class="bg-gray-900 dark:bg-gray-800 text-white">
     <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
-      <!-- Logo -->
-      <a href="/index.html" class="text-2xl font-bold whitespace-nowrap">Waybound</a>
+      <!-- Logo (back to root) -->
+      <a href="../index.html" class="text-2xl font-bold whitespace-nowrap">Waybound</a>
 
       <!-- Desktop links -->
       <ul id="navMenu" class="hidden md:flex space-x-8 list-none whitespace-nowrap">
-        <!-- Go up one level to root/index.html -->
         <li><a href="../index.html" class="hover:underline">Home</a></li>
-        <!-- NPC page is the current file, so just "npc.html" or "#" -->
-        <li><a href="npc.html" class="hover:underline">NPC Generator</a></li>
+        <li><a href="npc.html"      class="hover:underline">NPC Generator</a></li>
       </ul>
-      
-      
 
-      <!-- Mobile: hamburger -->
+      <!-- Mobile hamburger -->
       <button id="navToggle" class="md:hidden p-2 rounded focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16" />
+                d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
 
-      <!-- Dark-mode toggle (always visible) -->
-      <button
-        id="themeToggle"
-        class="ml-4 p-2 rounded focus:outline-none bg-gray-700 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500"
-        aria-label="Toggle dark mode"
-      >
+      <!-- Dark‐mode toggle -->
+      <button id="themeToggle"
+              class="ml-4 p-2 rounded focus:outline-none bg-gray-700 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500"
+              aria-label="Toggle dark mode">
         🌙
       </button>
     </div>
 
-    <!-- Mobile links (hidden by default) -->
+    <!-- Mobile nav links -->
     <div id="mobileMenu" class="md:hidden bg-gray-800 hidden">
       <ul class="flex flex-col space-y-2 p-4">
         <li><a href="../index.html" class="text-white hover:underline">Home</a></li>
         <li><a href="npc.html"      class="text-white hover:underline">NPC Generator</a></li>
       </ul>
     </div>
-    
   </header>
-      
-    
-      <main class="page-container">
-        <section class="hero">
-          <h1>Welcome to the NPC Generator!</h1>
-          <p>This page will help you generate NPC's, or even your playable characters!.</p>
-        </section>
-      
-        <section class="content">
-          <!-- More detailed content will go here later -->
-        </section>
-      </main>
-      
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6 mt-8">
-      <div class="max-w-screen-xl mx-auto px-4">
-        <p>Waybound RPG © 2025. All rights reserved.</p>
-      </div>
-    </footer>
-      
-    <script src="../scripts/shared.js"></script>
+
+  <!-- TOOL HERO -->
+  <main>
+    <section class="bg-gray-100 dark:bg-gray-800 text-center py-16">
+      <h1 class="text-4xl font-bold mb-2 dark:text-white">Welcome to the NPC Generator!</h1>
+      <p class="text-gray-700 dark:text-gray-300">
+        Generate rich, random NPCs for your RPG sessions.
+      </p>
+    </section>
+    <!-- NPC Generator Controls -->
+<section class="max-w-screen-xl mx-auto px-4 py-8 bg-white dark:bg-gray-800 rounded-lg mt-6">
+  <button
+    id="generateBtn"
+    class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition"
+  >
+    Generate NPC
+  </button>
+
+  <div
+    id="npcResult"
+    class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-left prose dark:prose-dark"
+  >
+    <!-- Generated NPC will appear here -->
+  </div>
+</section>
+
+
+    <!-- (Future NPC controls go here) -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6 mt-8">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <p>Waybound RPG © 2025. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Shared JS (up one folder) -->
+  <script src="../scripts/shared.js"></script>
+  <!-- NPC generator logic -->
+<script src="../scripts/npc.js"></script>
+
 </body>
 </html>

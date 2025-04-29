@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Waybound RPG</title>
+  <title>Waybound NPC Generator</title>
 
-  <script>tailwind.config={darkMode:'class'}</script>
-<script src="https://cdn.tailwindcss.com"></script>
-
+  <!-- Tailwind CDN + class‐based dark mode -->
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -19,67 +21,67 @@
 
       <!-- Desktop links -->
       <ul id="navMenu" class="hidden md:flex space-x-8 list-none whitespace-nowrap">
-        <li><a href="index.html" class="hover:underline">Home</a></li>
-        <li><a href="tools/npc.html" class="hover:underline">NPC Generator</a></li>
+        <li><a href="index.html"       class="hover:underline">Home</a></li>
+        <li><a href="tools/npc.html"   class="hover:underline">NPC Generator</a></li>
       </ul>
-      
 
-      <!-- Mobile: hamburger -->
+      <!-- Mobile hamburger -->
       <button id="navToggle" class="md:hidden p-2 rounded focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16" />
+                d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
 
-      <!-- Dark-mode toggle (always visible) -->
-      <button
-        id="themeToggle"
-        class="ml-4 p-2 rounded focus:outline-none bg-gray-700 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500"
-        aria-label="Toggle dark mode"
-      >
+      <!-- Dark‐mode toggle -->
+      <button id="themeToggle"
+              class="ml-4 p-2 rounded focus:outline-none bg-gray-700 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500"
+              aria-label="Toggle dark mode">
         🌙
       </button>
     </div>
 
-    <!-- Mobile links (hidden by default) -->
+    <!-- Mobile nav links -->
     <div id="mobileMenu" class="md:hidden bg-gray-800 hidden">
       <ul class="flex flex-col space-y-2 p-4">
-        <li><a href="../index.html"      class="text-white hover:underline">Home</a></li>
-        <li><a href="../tools/npc.html"  class="text-white hover:underline">NPC Generator</a></li>
-      </ul>      
+        <li><a href="index.html"     class="text-white hover:underline">Home</a></li>
+        <li><a href="tools/npc.html" class="text-white hover:underline">NPC Generator</a></li>
+      </ul>
     </div>
   </header>
 
   <!-- HERO -->
   <main>
     <section class="bg-gray-100 dark:bg-gray-800 text-center py-16">
-      <h1 class="text-4xl font-bold mb-2 dark:text-white">
-        Welcome to the NPC Generator!
-      </h1>
-      <p class="text-gray-700 dark:text-gray-300">
-        This page will help you generate NPCs, or even your playable characters!
+      <h1 class="text-5xl font-extrabold mb-4 dark:text-white">Welcome to Waybound!</h1>
+      <p class="text-lg text-gray-700 dark:text-gray-300">
+        We’re launching our first tool: the Character Generator.
       </p>
-    </section>    
-
-    <!-- NPC Generator-->
-    <section class="max-w-screen-xl mx-auto px-4 py-12 bg-white dark:bg-gray-800 text-center">
-      <h2 class="text-3xl font-bold mb-6 dark:text-white">Jump into the NPC Generator</h2>
-      <a href="tools/npc.html"
-         class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition">
-        Launch NPC Generator →
-      </a>
     </section>
-    
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6 mt-8">
-      <div class="max-w-screen-xl mx-auto px-4">
-        <p>Waybound RPG © 2025. All rights reserved.</p>
-      </div>
-    </footer>
+    <!-- CALL TO ACTION -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-screen-xl mx-auto px-4 py-12">
+      <!-- NPC Card -->
+      <a href="tools/npc-general.html" class="block p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2 dark:text-white">NPC Generator</h3>
+        <p class="text-gray-600 dark:text-gray-300">Quickly create a random NPC: name, race, trait, and more.</p>
+      </a>
+      <!-- PC Card -->
+      <a href="tools/pc-general.html" class="block p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2 dark:text-white">PC Generator</h3>
+        <p class="text-gray-600 dark:text-gray-300">Build a playable character with core stats in seconds.</p>
+      </a>
+    </section>    
   </main>
 
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6 mt-8">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <p>Waybound RPG © 2025. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Shared JS -->
   <script src="scripts/shared.js"></script>
 </body>
 </html>

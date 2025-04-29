@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPC Generator (General) – Waybound</title>
+
+  <!-- Tailwind CDN + class‐based dark mode -->
+  <script>tailwind.config = { darkMode: 'class' }</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <!-- HEADER / NAV -->
+  <header class="bg-gray-900 dark:bg-gray-800 text-white">
+    <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="../index.html" class="text-2xl font-bold">Waybound</a>
+      <ul id="navMenu" class="hidden md:flex space-x-6">
+        <li><a href="../index.html" class="hover:underline">Home</a></li>
+        <li><a href="npc-general.html" class="hover:underline">NPC</a></li>
+        <li><a href="pc-general.html"  class="hover:underline">PC</a></li>
+      </ul>
+      <button id="navToggle" class="md:hidden p-2">
+        <!-- hamburger icon -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <button id="themeToggle" class="ml-4 p-2">🌙</button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-gray-800 p-4">
+      <ul class="space-y-2">
+        <li><a href="../index.html" class="text-white">Home</a></li>
+        <li><a href="npc-general.html" class="text-white">NPC</a></li>
+        <li><a href="pc-general.html"  class="text-white">PC</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- GENERAL NPC UI -->
+  <main class="max-w-screen-xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-4 dark:text-white">Quick NPC Generator</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <select id="selName"  class="border p-2 rounded"></select>
+      <select id="selSex"   class="border p-2 rounded"></select>
+      <select id="selRace"  class="border p-2 rounded"></select>
+      <select id="selTrait" class="border p-2 rounded"></select>
+    </div>
+
+    <button id="generateBtn" class="bg-indigo-600 text-white py-2 px-4 rounded mb-4">
+      Generate NPC
+    </button>
+    <button id="advancedBtn" class="ml-4 text-indigo-600 underline">
+      More options →
+    </button>
+
+    <div id="resultCard" class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 text-center py-4">
+    Waybound RPG © 2025
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="../scripts/shared.js"></script>
+  <script src="../scripts/generator.js"></script>
+</body>
+</html>

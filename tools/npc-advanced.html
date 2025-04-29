@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPC Generator (Advanced) – Waybound</title>
+
+  <!-- Tailwind CDN + class-based dark mode -->
+  <script>tailwind.config = { darkMode: 'class' }</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <!-- HEADER / NAV -->
+  <header class="bg-gray-900 dark:bg-gray-800 text-white">
+    <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="../index.html" class="text-2xl font-bold whitespace-nowrap">Waybound</a>
+
+      <!-- Desktop links -->
+      <ul id="navMenu" class="hidden md:flex space-x-6 list-none whitespace-nowrap">
+        <li><a href="../index.html"      class="hover:underline">Home</a></li>
+        <li><a href="npc-general.html"   class="hover:underline">NPC Gen (Quick)</a></li>
+        <li><a href="npc-advanced.html"  class="hover:underline font-semibold">NPC Gen (Adv.)</a></li>
+        <li><a href="pc-general.html"    class="hover:underline">PC Gen (Quick)</a></li>
+        <li><a href="pc-advanced.html"   class="hover:underline">PC Gen (Adv.)</a></li>
+      </ul>
+
+      <!-- Mobile: hamburger button -->
+      <button id="navToggle" class="md:hidden p-2 rounded focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Dark-mode toggle -->
+      <button
+        id="themeToggle"
+        class="ml-4 p-2 rounded focus:outline-none bg-gray-700 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500"
+        aria-label="Toggle dark mode"
+      >
+        🌙
+      </button>
+    </div>
+
+    <!-- Mobile links -->
+    <div id="mobileMenu" class="md:hidden hidden bg-gray-800 p-4">
+      <ul class="space-y-2 list-none">
+        <li><a href="../index.html"      class="text-white hover:underline">Home</a></li>
+        <li><a href="npc-general.html"   class="text-white hover:underline">NPC Quick</a></li>
+        <li><a href="npc-advanced.html"  class="text-white hover:underline">NPC Advanced</a></li>
+        <li><a href="pc-general.html"    class="text-white hover:underline">PC Quick</a></li>
+        <li><a href="pc-advanced.html"   class="text-white hover:underline">PC Advanced</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ADVANCED FORM -->
+  <main class="max-w-screen-xl mx-auto px-4 py-8 space-y-8">
+    <h1 class="text-2xl font-bold dark:text-white">Advanced NPC Generator</h1>
+
+    <!-- 1) Identity -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div>
+        <label class="block mb-1">Name</label>
+        <select id="advName" class="w-full border p-2 rounded"></select>
+      </div>
+      <div>
+        <label class="block mb-1">Sex</label>
+        <select id="advSex" class="w-full border p-2 rounded"></select>
+      </div>
+      <div>
+        <label class="block mb-1">Race</label>
+        <select id="advRace" class="w-full border p-2 rounded"></select>
+      </div>
+      <div>
+        <label class="block mb-1">Class / Role</label>
+        <select id="advClass" class="w-full border p-2 rounded"></select>
+      </div>
+    </section>
+
+    <!-- 2) Stats -->
+    <section class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div><label>STR</label><input id="statSTR" type="number" class="w-full border p-2 rounded" /></div>
+      <div><label>DEX</label><input id="statDEX" type="number" class="w-full border p-2 rounded" /></div>
+      <div><label>CON</label><input id="statCON" type="number" class="w-full border p-2 rounded" /></div>
+      <div><label>INT</label><input id="statINT" type="number" class="w-full border p-2 rounded" /></div>
+      <div><label>WIS</label><input id="statWIS" type="number" class="w-full border p-2 rounded" /></div>
+      <div><label>CHA</label><input id="statCHA" type="number" class="w-full border p-2 rounded" /></div>
+      <div>
+        <label>Hit Dice</label>
+        <select id="advHD" class="w-full border p-2 rounded"></select>
+      </div>
+      <div><label>HP</label><input id="advHP" type="number" class="w-full border p-2 rounded" /></div>
+    </section>
+
+    <!-- 3) Personality & Background -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div>
+        <label>Trait</label>
+        <select id="advTrait" class="w-full border p-2 rounded"></select>
+      </div>
+      <div>
+        <label>Ideal</label>
+        <select id="advIdeal" class="w-full border p-2 rounded"></select>
+      </div>
+      <div>
+        <label>Bond</label>
+        <select id="advBond" class="w-full border p-2 rounded"></select>
+      </div>
+      <div>
+        <label>Flaw</label>
+        <select id="advFlaw" class="w-full border p-2 rounded"></select>
+      </div>
+    </section>
+
+    <!-- 4) Appearance -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div>
+        <label>Hair Style</label>
+        <select id="advHair" class="w-full border p-2 rounded"></select>
+      </div>
+      <div>
+        <label>Eye Color</label>
+        <select id="advEyes" class="w-full border p-2 rounded"></select>
+      </div>
+      <div>
+        <label>Clothing Style</label>
+        <select id="advClothing" class="w-full border p-2 rounded"></select>
+      </div>
+    </section>
+
+    <!-- 5) Hooks -->
+    <section>
+      <label class="block mb-1">Back‐story Hook</label>
+      <select id="advHook" class="w-full border p-2 rounded"></select>
+    </section>
+
+    <!-- Generate & Export -->
+    <div class="flex items-center space-x-4">
+      <button id="advGenerateBtn" class="bg-indigo-600 text-white py-2 px-4 rounded">
+        Generate NPC
+      </button>
+      <button id="exportJsonBtn"  class="bg-gray-600 text-white py-2 px-4 rounded">
+        Export JSON
+      </button>
+      <button id="exportPdfBtn"   class="bg-gray-600 text-white py-2 px-4 rounded">
+        Export PDF
+      </button>
+    </div>
+
+    <!-- Result Display -->
+    <div id="advResultCard" class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 text-center py-4">
+    Waybound RPG © 2025
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="../scripts/shared.js"></script>
+  <script src="../scripts/generator.js"></script>
+</body>
+</html>
