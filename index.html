@@ -1,125 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Waybound NPC Generator</title>
-
-  <!-- Tailwind CDN + class‐based dark mode -->
-  <!-- 1) Define config on window -->
-<script>
-  window.tailwindConfig = {
-    darkMode: 'class'
-  };
-</script>
-<!-- 2) Then load Tailwind CDN, which will pick up window.tailwindConfig -->
-<script src="https://cdn.tailwindcss.com"></script>
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Waybound RPG</title>
+  <script>window.tailwindConfig={darkMode:'class'}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-  <!-- NAVBAR -->
+  <!-- HEADER / NAV -->
   <header class="bg-gray-900 dark:bg-gray-800 text-white">
     <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
-      <!-- Logo -->
-      <a href="index.html" class="text-2xl font-bold whitespace-nowrap">Waybound</a>
-
-      <!-- Desktop links -->
-      <!-- Desktop links -->
-<ul id="navMenu" class="hidden md:flex space-x-6 list-none whitespace-nowrap">
-  <li>
-    <!-- Add “underline font-semibold” here on the link matching the current page -->
-    <a href="../index.html"      class="hover:underline">Home</a>
-  </li>
-  <li>
-    <a href="tools/npc-general.html"   class="hover:underline">NPC Quick</a>
-  </li>
-  <li>
-    <a href="tools/npc-advanced.html"  class="hover:underline">NPC Advanced</a>
-  </li>
-  <li>
-    <a href="tools/pc-general.html"    class="hover:underline">PC Quick</a>
-  </li>
-  <li>
-    <a href="tools/pc-advanced.html"   class="hover:underline">PC Advanced</a>
-  </li>
-</ul>
-
-      <!-- Mobile hamburger -->
-      <button id="navToggle" class="md:hidden p-2 rounded focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-
-      <!-- Dark‐mode toggle -->
-      <button id="themeToggle"
-              class="ml-4 p-2 rounded focus:outline-none bg-gray-700 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500"
-              aria-label="Toggle dark mode">
-        🌙
-      </button>
+      <a href="index.html" class="text-2xl font-bold">Waybound</a>
+      <ul id="navMenu" class="hidden md:flex space-x-6">
+        <li><a href="index.html"        class="underline font-semibold">Home</a></li>
+        <li><a href="tools/npc-general.html"   class="hover:underline">NPC Quick</a></li>
+        <li><a href="tools/npc-advanced.html"  class="hover:underline">NPC Advanced</a></li>
+        <li><a href="tools/pc-general.html"    class="hover:underline">PC Quick</a></li>
+        <li><a href="tools/pc-advanced.html"   class="hover:underline">PC Advanced</a></li>
+      </ul>
+      <div class="flex items-center">
+        <button id="navToggle" class="md:hidden p-2 focus:outline-none">🍔</button>
+        <button id="themeToggle"
+                class="ml-4 p-2 bg-gray-700 dark:bg-gray-600 rounded focus:outline-none"
+                aria-label="Toggle dark mode">🌙</button>
+      </div>
     </div>
-
-    <!-- Mobile links (hidden by default) -->
-<div id="mobileMenu" class="md:hidden hidden bg-gray-800 p-4">
-  <ul class="flex flex-col space-y-2 list-none">
-    <li><a href="../index.html"      class="text-white hover:underline">Home</a></li>
-    <li><a href="tools/npc-general.html"   class="text-white hover:underline">NPC Quick</a></li>
-    <li><a href="tools/npc-advanced.html"  class="text-white hover:underline">NPC Advanced</a></li>
-    <li><a href="tools/pc-general.html"    class="text-white hover:underline">PC Quick</a></li>
-    <li><a href="tools/pc-advanced.html"   class="text-white hover:underline">PC Advanced</a></li>
-  </ul>
-</div>
+    <div id="mobileMenu" class="md:hidden hidden bg-gray-800 p-4">
+      <ul class="space-y-2">
+        <li><a href="index.html"        class="text-white hover:underline">Home</a></li>
+        <li><a href="tools/npc-general.html"   class="text-white hover:underline">NPC Quick</a></li>
+        <li><a href="tools/npc-advanced.html"  class="text-white hover:underline">NPC Adv.</a></li>
+        <li><a href="tools/pc-general.html"    class="text-white hover:underline">PC Quick</a></li>
+        <li><a href="tools/pc-advanced.html"   class="text-white hover:underline">PC Adv.</a></li>
+      </ul>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <main>
-    <section class="bg-gray-100 dark:bg-gray-900 text-center py-16">
-      <h1 class="text-5xl font-extrabold mb-4 dark:text-white">
-        Welcome to Waybound!
-      </h1>
-      <p class="text-lg text-gray-700 dark:text-gray-300">
-        Choose your generator to begin.
-      </p>
-    </section>
-  
-    <section class="max-w-screen-xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <!-- NPC Quick -->
-      <a
-        href="tools/npc-general.html"
-        class="block bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 hover:shadow-lg transition"
-      >
+  <!-- LANDING → choose your generator -->
+  <main class="text-center py-16">
+    <h1 class="text-5xl font-extrabold mb-4 dark:text-white">Welcome to Waybound!</h1>
+    <p class="text-lg text-gray-700 dark:text-gray-300 mb-12">
+      Pick a generator to get started.
+    </p>
+    <div class="max-w-screen-xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <a href="tools/npc-general.html"
+         class="block bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 hover:shadow-lg transition">
         <h3 class="text-2xl font-semibold dark:text-white">NPC Generator</h3>
         <p class="text-gray-600 dark:text-gray-300">
-          Quickly create a random NPC: name, race, trait, and more.
+          Quickly create a random NPC: name, race, trait…
         </p>
       </a>
-  
-      <!-- PC Quick -->
-      <a
-        href="tools/pc-general.html"
-        class="block bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 hover:shadow-lg transition"
-      >
+      <a href="tools/pc-general.html"
+         class="block bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 hover:shadow-lg transition">
         <h3 class="text-2xl font-semibold dark:text-white">PC Generator</h3>
         <p class="text-gray-600 dark:text-gray-300">
           Build a playable character with core stats in seconds.
         </p>
       </a>
-    </section>
-  </main>
-  
-
-  <!-- FOOTER -->
-  <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6 mt-8">
-    <div class="max-w-screen-xl mx-auto px-4">
-      <p>Waybound RPG © 2025. All rights reserved.</p>
     </div>
+  </main>
+
+  <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6">
+    Waybound RPG © 2025
   </footer>
 
-  <!-- Shared UI behavior -->
-<script src="/scripts/shared.js"></script>
-<!-- Data & generate logic -->
-<script src="/scripts/generator.js"></script>
+  <script src="/scripts/shared.js"></script>
 </body>
 </html>
