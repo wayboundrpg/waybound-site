@@ -32,13 +32,27 @@ function pick(sel) {
 
 // Main entry
 document.addEventListener("DOMContentLoaded", async () => {
-  const url = location.pathname;
-
-  const isNpcGeneral  = url.endsWith("npc-general.html");
-  const isPcGeneral   = url.endsWith("pc-general.html");
-  const isNpcAdvanced = url.endsWith("npc-advanced.html");
-  const isPcAdvanced  = url.endsWith("pc-advanced.html");
-
+    // DEBUG #1: what page are we on?
+    console.log("🔥 DOMContentLoaded, pathname:", location.pathname);
+  
+    // DEBUG #2: what <select> IDs exist on this page right now?
+    console.log("📝 selects on page:", 
+      Array.from(document.querySelectorAll("select")).map(s => s.id)
+    );
+  
+    const isNpcGeneral  = location.pathname.endsWith("npc-general.html");
+    const isPcGeneral   = location.pathname.endsWith("pc-general.html");
+    const isNpcAdvanced = location.pathname.endsWith("npc-advanced.html");
+    const isPcAdvanced  = location.pathname.endsWith("pc-advanced.html");
+  
+    // DEBUG #3: which branch are we in?
+    console.log({
+      isNpcGeneral, isPcGeneral,
+      isNpcAdvanced, isPcAdvanced
+    });
+  
+    // …the rest of your code unchanged…
+  
   // 1) Load core pools (for both general & advanced)
   const [names, sexes, races, traits] = await Promise.all([
     fetchJson("/data/names.json"),
@@ -73,6 +87,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // === Advanced Generator (Detailed NPC/PC) ===
+  console.log("ADVANCED BRANCH: location=", location.pathname);
   const [
     classes, backgrounds,
     ideals, bonds, flaws,
