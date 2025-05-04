@@ -4,9 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NPC Generator (Advanced) – Waybound</title>
-  <!-- Tailwind + dark-mode config -->
+
+  <!-- 1) Tailwind + dark‐mode -->
   <script>window.tailwindConfig={darkMode:'class'}</script>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 2) Smooth accordion transitions -->
+  <style>
+    details > div {
+      @apply overflow-hidden transition-all duration-300 ease-in-out;
+    }
+    details[open] > div {
+      @apply max-h-screen;
+    }
+    details:not([open]) > div {
+      @apply max-h-0;
+    }
+  </style>
 </head>
 
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -52,7 +66,7 @@
       Advanced NPC Generator
     </h1>
 
-    <!-- 1) Identity (always open) -->
+    <!-- 1) Identity -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
       <div>
         <label class="block mb-1 dark:text-gray-300">Name</label>
@@ -72,47 +86,19 @@
       </div>
     </section>
 
-    <!-- 2) Core Stats (always open) -->
+    <!-- 2) Core Stats -->
     <section class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-      <div>
-        <label class="block mb-1 dark:text-gray-300">STR</label>
-        <input id="statSTR" type="number" min="1" max="20"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-      </div>
-      <div>
-        <label class="block mb-1 dark:text-gray-300">DEX</label>
-        <input id="statDEX" type="number" min="1" max="20"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-      </div>
-      <div>
-        <label class="block mb-1 dark:text-gray-300">CON</label>
-        <input id="statCON" type="number" min="1" max="20"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-      </div>
-      <div>
-        <label class="block mb-1 dark:text-gray-300">INT</label>
-        <input id="statINT" type="number" min="1" max="20"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-      </div>
-      <div>
-        <label class="block mb-1 dark:text-gray-300">WIS</label>
-        <input id="statWIS" type="number" min="1" max="20"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-      </div>
-      <div>
-        <label class="block mb-1 dark:text-gray-300">CHA</label>
-        <input id="statCHA" type="number" min="1" max="20"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-      </div>
+      <div><label class="block mb-1 dark:text-gray-300">STR</label><input id="statSTR" type="number" min="1" max="20" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
+      <div><label class="block mb-1 dark:text-gray-300">DEX</label><input id="statDEX" type="number" min="1" max="20" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
+      <div><label class="block mb-1 dark:text-gray-300">CON</label><input id="statCON" type="number" min="1" max="20" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
+      <div><label class="block mb-1 dark:text-gray-300">INT</label><input id="statINT" type="number" min="1" max="20" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
+      <div><label class="block mb-1 dark:text-gray-300">WIS</label><input id="statWIS" type="number" min="1" max="20" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
+      <div><label class="block mb-1 dark:text-gray-300">CHA</label><input id="statCHA" type="number" min="1" max="20" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
       <div>
         <label class="block mb-1 dark:text-gray-300">Hit Dice</label>
         <select id="advHD" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
       </div>
-      <div>
-        <label class="block mb-1 dark:text-gray-300">HP</label>
-        <input id="advHP" type="number" min="1"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-      </div>
+      <div><label class="block mb-1 dark:text-gray-300">HP</label><input id="advHP" type="number" min="1" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
     </section>
 
     <!-- 3) Personality & Background -->
@@ -121,22 +107,10 @@
         🧠 Personality & Background
       </summary>
       <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Trait</label>
-          <select id="advTrait" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Ideal</label>
-          <select id="advIdeal" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Bond</label>
-          <select id="advBond" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Flaw</label>
-          <select id="advFlaw" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
+        <div><label class="block mb-1 dark:text-gray-300">Trait</label><select id="advTrait" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
+        <div><label class="block mb-1 dark:text-gray-300">Ideal</label><select id="advIdeal" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
+        <div><label class="block mb-1 dark:text-gray-300">Bond</label><select id="advBond" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
+        <div><label class="block mb-1 dark:text-gray-300">Flaw</label><select id="advFlaw" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
       </div>
     </details>
 
@@ -146,23 +120,11 @@
         👁️ Appearance & Hook
       </summary>
       <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Hair Style</label>
-          <select id="advHair" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Eye Color</label>
-          <select id="advEyes" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Clothing Style</label>
-          <select id="advClothing" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
+        <div><label class="block mb-1 dark:text-gray-300">Hair Style</label><select id="advHair" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
+        <div><label class="block mb-1 dark:text-gray-300">Eye Color</label><select id="advEyes" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
+        <div><label class="block mb-1 dark:text-gray-300">Clothing Style</label><select id="advClothing" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
       </div>
-      <div class="mt-4">
-        <label class="block mb-1 dark:text-gray-300">Back-story Hook</label>
-        <select id="advHook" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-      </div>
+      <div class="mt-4"><label class="block mb-1 dark:text-gray-300">Back-story Hook</label><select id="advHook" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
     </details>
 
     <!-- 5) Combat & NPC Stats -->
@@ -171,71 +133,63 @@
         🛡️ Combat & NPC Stats
       </summary>
       <div class="mt-3 space-y-4">
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Challenge Rating</label>
-          <select id="advCR" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Armor Class</label>
-          <input id="advAC" type="number" min="1" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Speed</label>
-          <input id="advSpeed" type="text" placeholder="30 ft., fly 60 ft." class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Damage Resistances</label>
-          <input id="advResist" type="text" placeholder="fire, poison" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Senses</label>
-          <select id="advSenses" multiple class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Actions</label>
-          <textarea id="advActions" rows="3" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Multiattack: two claws…"></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Reactions</label>
-          <textarea id="advReactions" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Parry: +5 to AC…"></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Legendary Actions</label>
-          <textarea id="advLegendary" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Detect:…"></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Lair Actions</label>
-          <textarea id="advLair" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Blood moon rises…"></textarea>
-        </div>
+        <div><label class="block mb-1 dark:text-gray-300">Challenge Rating</label><select id="advCR" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
+        <div><label class="block mb-1 dark:text-gray-300">Armor Class</label><input id="advAC" type="number" min="1" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
+        <div><label class="block mb-1 dark:text-gray-300">Speed</label><input id="advSpeed" type="text" placeholder="30 ft., fly 60 ft." class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
+        <div><label class="block mb-1 dark:text-gray-300">Damage Resistances</label><input id="advResist" type="text" placeholder="fire, poison" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/></div>
+        <div><label class="block mb-1 dark:text-gray-300">Senses</label><select id="advSenses" multiple class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select></div>
+        <div><label class="block mb-1 dark:text-gray-300">Actions</label><textarea id="advActions" rows="3" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Multiattack: two claws…"></textarea></div>
+        <div><label class="block mb-1 dark:text-gray-300">Reactions</label><textarea id="advReactions" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Parry: +5 to AC…"></textarea></div>
+        <div><label class="block mb-1 dark:text-gray-300">Legendary Actions</label><textarea id="advLegendary" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Detect:…"></textarea></div>
+        <div><label class="block mb-1 dark:text-gray-300">Lair Actions</label><textarea id="advLair" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Blood moon rises…"></textarea></div>
       </div>
     </details>
 
     <!-- Generate & Export -->
     <div class="flex items-center space-x-4 mb-6">
-      <button id="advGenerateBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded transition-colors duration-200">
+      <button id="advGenerateBtn"
+        class="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold py-2 px-4 rounded transition-colors duration-200 ease-in-out"
+      >
         Generate NPC
       </button>
-      <button id="exportJsonBtn" disabled class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed">
+      <button id="exportJsonBtn" disabled
+        class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed transition-opacity duration-200"
+      >
         Export JSON
       </button>
-      <button id="exportPdfBtn" disabled class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed">
+      <button id="exportPdfBtn" disabled
+        class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed transition-opacity duration-200"
+      >
         Export PDF
       </button>
     </div>
 
     <!-- Result Display -->
-    <div id="advResultCard" class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded transition-shadow duration-200 ease-in-out hover:shadow-lg">
-      <!-- Generated NPC appears here -->
-    </div>
+    <div
+      id="advResultCard"
+      class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded opacity-0 scale-95 transition-all duration-300 ease-out hover:shadow-lg"
+    ></div>
   </main>
 
-  <!-- FOOTER -->
   <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6">
     Waybound RPG © 2025
   </footer>
 
-  <!-- SCRIPTS -->
   <script src="/scripts/shared.js"></script>
   <script src="/scripts/generator.js"></script>
+
+  <!-- animate & enable JSON -->
+  <script>
+    document.getElementById('advGenerateBtn').addEventListener('click', () => {
+      const card = document.getElementById('advResultCard');
+      requestAnimationFrame(() => {
+        card.classList.remove('opacity-0','scale-95');
+        card.classList.add('opacity-100','scale-100');
+      });
+      const j = document.getElementById('exportJsonBtn');
+      j.disabled = false;
+      j.classList.remove('opacity-50','cursor-not-allowed');
+    });
+  </script>
 </body>
 </html>
