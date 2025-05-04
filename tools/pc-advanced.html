@@ -159,50 +159,53 @@
 
     <!-- 5) Proficiencies & Equipment (PC-only section omitted in NPC) -->
 
-    <!-- 6) Combat & NPC Stats -->
+    <!-- 6) Proficiencies & Equipment -->
     <details class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-6">
       <summary class="cursor-pointer font-semibold dark:text-gray-200">
-        🛡️ Combat & NPC Stats
+        ⚒️ Proficiencies & Equipment
       </summary>
       <div class="mt-3 space-y-4">
         <div>
-          <label class="block mb-1 dark:text-gray-300">Challenge Rating</label>
-          <select id="advCR" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+          <label class="block mb-1 dark:text-gray-300">Skill Proficiencies</label>
+          <select id="advSkills" multiple
+                  class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                         border p-2 rounded transition-colors duration-200">
+          </select>
         </div>
         <div>
-          <label class="block mb-1 dark:text-gray-300">Armor Class</label>
-          <input id="advAC" type="number" min="1" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
+          <label class="block mb-1 dark:text-gray-300">Tool Proficiencies</label>
+          <select id="advTools" multiple class="w-full ..."></select>
         </div>
         <div>
-          <label class="block mb-1 dark:text-gray-300">Speed</label>
-          <input id="advSpeed" type="text" placeholder="30 ft., fly 60 ft." class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
+          <label class="block mb-1 dark:text-gray-300">Languages</label>
+          <select id="advLangs" multiple class="w-full ..."></select>
         </div>
         <div>
-          <label class="block mb-1 dark:text-gray-300">Damage Resistances</label>
-          <input id="advResist" type="text" placeholder="fire, poison" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"/>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Senses</label>
-          <select id="advSenses" multiple class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out"></select>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Actions</label>
-          <textarea id="advActions" rows="3" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Multiattack: two claws…"></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Reactions</label>
-          <textarea id="advReactions" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Parry: +5 to AC…"></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Legendary Actions</label>
-          <textarea id="advLegendary" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Detect:…"></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 dark:text-gray-300">Lair Actions</label>
-          <textarea id="advLair" rows="2" class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border p-2 rounded transition-colors duration-200 ease-in-out" placeholder="Blood moon rises…"></textarea>
+          <label class="block mb-1 dark:text-gray-300">Starting Equipment</label>
+          <input id="advGear" type="text" placeholder="Leather armor, longsword…"
+                 class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                        border p-2 rounded transition-colors duration-200"/>
         </div>
       </div>
     </details>
+    <!-- 7) Spellcasting (PC-only section omitted in NPC) -->
+    <details class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-6">
+      <summary class="cursor-pointer font-semibold dark:text-gray-200">
+        ✨ Spellcasting
+      </summary>
+      <div class="mt-3 space-y-4">
+        <div>
+          <label class="block mb-1 dark:text-gray-300">Spells Known / Prepared</label>
+          <select id="advSpells" multiple class="w-full ..."></select>
+        </div>
+        <div>
+          <label class="block mb-1 dark:text-gray-300">Spell Slots</label>
+          <input id="advSlots" type="text" placeholder="1st:4, 2nd:3, …"
+                 class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                        border p-2 rounded transition-colors duration-200"/>
+        </div>
+      </div>
+    </details>    
 
     <!-- Generate & Export -->
     <div class="flex items-center space-x-4 mb-6">
