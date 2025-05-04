@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Waybound RPG</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waybound RPG</title>
   
-  <!-- ↓↓↓ Dark-mode config for the CDN ↓↓↓ -->
-  <script>
-    tailwind.config = { darkMode: 'class' };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+    <!-- 1) Must come first, before Tailwind CSS -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {},
+        },
+        plugins: [],
+      };
+    </script>
+  
+    <!-- 2) Then load Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- 3) Any other scripts/styles -->
+    <link rel="stylesheet" href="../styles/main.css" />
+    <script src="/scripts/shared.js" defer></script>
+    <script src="/scripts/generator.js" defer></script>
+  </head>
+  
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
   <!-- HEADER / NAV -->
   <header class="bg-gray-900 dark:bg-gray-800 text-white">

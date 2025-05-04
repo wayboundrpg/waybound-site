@@ -5,9 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NPC Generator (Advanced) – Waybound</title>
 
-  <!-- 1) Tailwind + dark‐mode -->
-  <script>window.tailwindConfig={darkMode:'class'}</script>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 1) Must come first, before Tailwind CSS -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {},
+        },
+        plugins: [],
+      };
+    </script>
+  
+    <!-- 2) Then load Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- 3) Any other scripts/styles -->
+    <link rel="stylesheet" href="../styles/main.css" />
+    <script src="/scripts/shared.js" defer></script>
+    <script src="/scripts/generator.js" defer></script>
 
   <!-- 2) Smooth accordion transitions -->
   <style>
