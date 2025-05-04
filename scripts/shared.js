@@ -14,6 +14,10 @@ if (themeToggle) {
     } else {
       themeToggle.textContent = '🌙';
     }
+    localStorage.setItem(
+      'theme',
+      document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+    );    
   });
 }
 

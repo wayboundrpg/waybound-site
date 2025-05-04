@@ -4,85 +4,90 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Waybound RPG</title>
-  
-    <!-- 1) Must come first, before Tailwind CSS -->
+
+    <!-- 1) Tailwind config & theme-persist (before loading Tailwind) -->
     <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {},
-        },
-        plugins: [],
-      };
+      // tell Tailwind CDN to use class-based dark mode
+      window.tailwindConfig = { darkMode: 'class' };
+
+      // restore saved theme or fall back to OS setting
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (stored === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
     </script>
-  
-    <!-- 2) Then load Tailwind via CDN -->
+
+    <!-- 2) Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-  
-    <!-- 3) Any other scripts/styles -->
+
+    <!-- 3) Your CSS -->
     <link rel="stylesheet" href="../styles/main.css" />
+
+    <!-- 4) Shared UI behavior (deferred) -->
     <script src="/scripts/shared.js" defer></script>
-    <script src="/scripts/generator.js" defer></script>
   </head>
-  
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-  <!-- HEADER / NAV -->
-  <header class="bg-gray-900 dark:bg-gray-800 text-white">
-    <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="index.html" class="text-2xl font-bold">Waybound</a>
-      <ul id="navMenu" class="hidden md:flex space-x-6">
-        <li><a href="index.html"        class="underline font-semibold">Home</a></li>
-        <li><a href="tools/npc-general.html"   class="hover:underline">NPC Quick</a></li>
-        <li><a href="tools/npc-advanced.html"  class="hover:underline">NPC Advanced</a></li>
-        <li><a href="tools/pc-general.html"    class="hover:underline">PC Quick</a></li>
-        <li><a href="tools/pc-advanced.html"   class="hover:underline">PC Advanced</a></li>
-      </ul>
-      <div class="flex items-center">
-        <button id="navToggle" class="md:hidden p-2 focus:outline-none">🍔</button>
-        <button id="themeToggle"
-                class="ml-4 p-2 bg-gray-700 dark:bg-gray-600 rounded focus:outline-none"
-                aria-label="Toggle dark mode">🌙</button>
+
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- NAVBAR -->
+    <header class="bg-gray-900 dark:bg-gray-800 text-white">
+      <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="index.html" class="text-2xl font-bold">Waybound</a>
+        <ul id="navMenu" class="hidden md:flex space-x-6">
+          <li><a href="index.html"              class="underline font-semibold">Home</a></li>
+          <li><a href="tools/npc-general.html"  class="hover:underline">NPC Quick</a></li>
+          <li><a href="tools/npc-advanced.html" class="hover:underline">NPC Advanced</a></li>
+          <li><a href="tools/pc-general.html"   class="hover:underline">PC Quick</a></li>
+          <li><a href="tools/pc-advanced.html"  class="hover:underline">PC Advanced</a></li>
+        </ul>
+        <div class="flex items-center">
+          <button id="navToggle" class="md:hidden p-2 focus:outline-none">🍔</button>
+          <button id="themeToggle"
+                  class="ml-4 p-2 bg-gray-700 dark:bg-gray-600 rounded focus:outline-none"
+                  aria-label="Toggle dark mode">🌙</button>
+        </div>
       </div>
-    </div>
-    <div id="mobileMenu" class="md:hidden hidden bg-gray-800 p-4">
-      <ul class="space-y-2">
-        <li><a href="index.html"        class="text-white hover:underline">Home</a></li>
-        <li><a href="tools/npc-general.html"   class="text-white hover:underline">NPC Quick</a></li>
-        <li><a href="tools/npc-advanced.html"  class="text-white hover:underline">NPC Adv.</a></li>
-        <li><a href="tools/pc-general.html"    class="text-white hover:underline">PC Quick</a></li>
-        <li><a href="tools/pc-advanced.html"   class="text-white hover:underline">PC Adv.</a></li>
-      </ul>
-    </div>
-  </header>
+      <div id="mobileMenu" class="md:hidden hidden bg-gray-800 p-4">
+        <ul class="space-y-2">
+          <li><a href="index.html"              class="text-white hover:underline">Home</a></li>
+          <li><a href="tools/npc-general.html"  class="text-white hover:underline">NPC Quick</a></li>
+          <li><a href="tools/npc-advanced.html" class="text-white hover:underline">NPC Adv.</a></li>
+          <li><a href="tools/pc-general.html"   class="text-white hover:underline">PC Quick</a></li>
+          <li><a href="tools/pc-advanced.html"  class="text-white hover:underline">PC Adv.</a></li>
+        </ul>
+      </div>
+    </header>
 
-  <!-- LANDING → choose your generator -->
-  <main class="text-center py-16">
-    <h1 class="text-5xl font-extrabold mb-4 dark:text-white">Welcome to Waybound!</h1>
-    <p class="text-lg text-gray-700 dark:text-gray-300 mb-12">
-      Pick a generator to get started.
-    </p>
-    <div class="max-w-screen-xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <a href="tools/npc-general.html"
-         class="block bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 hover:shadow-lg transition">
-        <h3 class="text-2xl font-semibold dark:text-white">NPC Generator</h3>
-        <p class="text-gray-600 dark:text-gray-300">
-          Quickly create a random NPC: name, race, trait…
-        </p>
-      </a>
-      <a href="tools/pc-general.html"
-         class="block bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 hover:shadow-lg transition">
-        <h3 class="text-2xl font-semibold dark:text-white">PC Generator</h3>
-        <p class="text-gray-600 dark:text-gray-300">
-          Build a playable character with core stats in seconds.
-        </p>
-      </a>
-    </div>
-  </main>
+    <!-- LANDING -->
+    <main class="text-center py-16">
+      <h1 class="text-5xl font-extrabold mb-4 dark:text-white">Welcome to Waybound!</h1>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-12">
+        Pick a generator to get started.
+      </p>
+      <div class="max-w-screen-xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <a href="tools/npc-general.html"
+           class="block bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 hover:shadow-lg transition">
+          <h3 class="text-2xl font-semibold dark:text-white">NPC Generator</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Quickly create a random NPC: name, race, trait…
+          </p>
+        </a>
+        <a href="tools/pc-general.html"
+           class="block bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 hover:shadow-lg transition">
+          <h3 class="text-2xl font-semibold dark:text-white">PC Generator</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Build a playable character with core stats in seconds.
+          </p>
+        </a>
+      </div>
+    </main>
 
-  <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6">
-    Waybound RPG © 2025
-  </footer>
-
-  <script src="/scripts/shared.js"></script>
-</body>
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-6">
+      Waybound RPG © 2025
+    </footer>
+  </body>
 </html>
