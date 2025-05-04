@@ -21,9 +21,11 @@
       </ul>
       <div class="flex items-center">
         <button id="navToggle" class="md:hidden p-2 focus:outline-none">🍔</button>
-        <button id="themeToggle"
-                class="ml-4 p-2 bg-gray-700 dark:bg-gray-600 rounded focus:outline-none"
-                aria-label="Toggle dark mode">🌙</button>
+        <button
+          id="themeToggle"
+          class="ml-4 p-2 bg-gray-700 dark:bg-gray-600 rounded focus:outline-none"
+          aria-label="Toggle dark mode"
+        >🌙</button>
       </div>
     </div>
     <div id="mobileMenu" class="md:hidden hidden bg-gray-800 p-4">
@@ -44,27 +46,35 @@
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <div>
         <label class="dark:text-gray-300">Name</label>
-        <select id="advName"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advName"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
       <div>
         <label class="dark:text-gray-300">Sex</label>
-        <select id="advSex"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advSex"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
       <div>
         <label class="dark:text-gray-300">Race</label>
-        <select id="advRace"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advRace"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
       <div>
         <label class="dark:text-gray-300">Class / Role</label>
-        <select id="advClass"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advClass"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
     </section>
 
@@ -76,12 +86,14 @@
                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
                       border p-2 rounded transition-colors duration-200 ease-in-out"/>
       </div>
-      <!-- (DEX, CON, INT, WIS, CHA) -->
+      <!-- Repeat DEX, CON, INT, WIS, CHA in the same way… -->
       <div>
         <label class="dark:text-gray-300">Hit Dice</label>
-        <select id="advHD"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advHD"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
       <div>
         <label class="dark:text-gray-300">HP</label>
@@ -95,59 +107,69 @@
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <div>
         <label class="dark:text-gray-300">Trait</label>
-        <select id="advTrait"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advTrait"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
-      <!-- (Ideal, Bond, Flaw) -->
+      <!-- Ideal, Bond, Flaw… -->
     </section>
 
     <!-- 4) Appearance -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <div>
         <label class="dark:text-gray-300">Hair Style</label>
-        <select id="advHair"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advHair"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
-      <!-- (Eyes, Clothing) -->
+      <!-- Eyes, Clothing… -->
     </section>
 
     <!-- 5) Hooks -->
     <section>
       <label class="dark:text-gray-300">Back-story Hook</label>
-      <select id="advHook"
-              class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                     border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+      <select
+        id="advHook"
+        class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+               border p-2 rounded transition-colors duration-200 ease-in-out"
+      ></select>
     </section>
 
     <!-- Generate & Export -->
     <div class="flex items-center space-x-4">
-      <button id="advGenerateBtn"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded
-                     transition-colors duration-200">
-        Generate PC
-      </button>
-      <button id="exportJsonBtn" disabled
-              class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed">
-        Export JSON
-      </button>
-      <button id="exportPdfBtn" disabled
-              class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed">
-        Export PDF
-      </button>
+      <button
+        id="advGenerateBtn"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded
+               transition-colors duration-200"
+      >Generate PC</button>
+      <button
+        id="exportJsonBtn"
+        disabled
+        class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed"
+      >Export JSON</button>
+      <button
+        id="exportPdfBtn"
+        disabled
+        class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed"
+      >Export PDF</button>
     </div>
 
-    <div id="advResultCard"
-         class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded
-                transition-shadow duration-200 ease-in-out hover:shadow-lg">
-    </div>
+    <div
+      id="advResultCard"
+      class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded
+             transition-shadow duration-200 ease-in-out hover:shadow-lg"
+    ></div>
   </main>
 
   <footer class="bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-center py-4">
     Waybound RPG © 2025
   </footer>
 
+  <!-- SCRIPTS -->
   <script src="/scripts/shared.js"></script>
   <script src="/scripts/generator.js"></script>
 </body>

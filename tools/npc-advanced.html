@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NPC Generator (Advanced) – Waybound</title>
-  <!-- Tailwind + dark mode config -->
+  <!-- Tailwind + dark-mode config -->
   <script>window.tailwindConfig={darkMode:'class'}</script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-  <!-- HEADER / NAV (same five links, underline current) -->
+  <!-- HEADER / NAV -->
   <header class="bg-gray-900 dark:bg-gray-800 text-white">
     <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="../index.html" class="text-2xl font-bold">Waybound</a>
@@ -23,9 +23,11 @@
       </ul>
       <div class="flex items-center">
         <button id="navToggle" class="md:hidden p-2 focus:outline-none">🍔</button>
-        <button id="themeToggle"
-                class="ml-4 p-2 bg-gray-700 dark:bg-gray-600 rounded focus:outline-none"
-                aria-label="Toggle dark mode">🌙</button>
+        <button
+          id="themeToggle"
+          class="ml-4 p-2 bg-gray-700 dark:bg-gray-600 rounded focus:outline-none"
+          aria-label="Toggle dark mode"
+        >🌙</button>
       </div>
     </div>
     <div id="mobileMenu" class="md:hidden hidden bg-gray-800 p-4">
@@ -41,116 +43,219 @@
 
   <!-- ADVANCED NPC FORM -->
   <main class="max-w-screen-xl mx-auto px-4 py-8 space-y-8">
-    <h1 class="text-2xl font-bold dark:text-white text-center">Advanced NPC Generator</h1>
+    <h1 class="text-2xl font-bold dark:text-white text-center">
+      Advanced NPC Generator
+    </h1>
 
     <!-- 1) Identity -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <div>
-        <label class="dark:text-gray-300">Name</label>
-        <select id="advName"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <label class="block mb-1 dark:text-gray-300">Name</label>
+        <select
+          id="advName"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
       <div>
-        <label class="dark:text-gray-300">Sex</label>
-        <select id="advSex"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <label class="block mb-1 dark:text-gray-300">Sex</label>
+        <select
+          id="advSex"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
       <div>
-        <label class="dark:text-gray-300">Race</label>
-        <select id="advRace"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <label class="block mb-1 dark:text-gray-300">Race</label>
+        <select
+          id="advRace"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
       <div>
-        <label class="dark:text-gray-300">Class / Role</label>
-        <select id="advClass"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <label class="block mb-1 dark:text-gray-300">Class / Role</label>
+        <select
+          id="advClass"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
     </section>
 
     <!-- 2) Stats -->
     <section class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <!-- add min/max and color classes -->
       <div>
-        <label class="dark:text-gray-300">STR</label>
-        <input id="statSTR" type="number" min="1" max="20"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                      border p-2 rounded transition-colors duration-200 ease-in-out"/>
-      </div>
-      <!-- Repeat for DEX, CON, INT, WIS, CHA… -->
-      <div>
-        <label class="dark:text-gray-300">Hit Dice</label>
-        <select id="advHD"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <label class="block mb-1 dark:text-gray-300">STR</label>
+        <input
+          id="statSTR" type="number" min="1" max="20"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        />
       </div>
       <div>
-        <label class="dark:text-gray-300">HP</label>
-        <input id="advHP" type="number" min="1"
-               class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                      border p-2 rounded transition-colors duration-200 ease-in-out"/>
+        <label class="block mb-1 dark:text-gray-300">DEX</label>
+        <input
+          id="statDEX" type="number" min="1" max="20"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        />
+      </div>
+      <div>
+        <label class="block mb-1 dark:text-gray-300">CON</label>
+        <input
+          id="statCON" type="number" min="1" max="20"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        />
+      </div>
+      <div>
+        <label class="block mb-1 dark:text-gray-300">INT</label>
+        <input
+          id="statINT" type="number" min="1" max="20"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        />
+      </div>
+      <div>
+        <label class="block mb-1 dark:text-gray-300">WIS</label>
+        <input
+          id="statWIS" type="number" min="1" max="20"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        />
+      </div>
+      <div>
+        <label class="block mb-1 dark:text-gray-300">CHA</label>
+        <input
+          id="statCHA" type="number" min="1" max="20"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        />
+      </div>
+      <div>
+        <label class="block mb-1 dark:text-gray-300">Hit Dice</label>
+        <select
+          id="advHD"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
+      </div>
+      <div>
+        <label class="block mb-1 dark:text-gray-300">HP</label>
+        <input
+          id="advHP" type="number" min="1"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        />
       </div>
     </section>
 
     <!-- 3) Personality & Background -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- Trait, Ideal, Bond, Flaw… each with same select classes -->
       <div>
         <label class="dark:text-gray-300">Trait</label>
-        <select id="advTrait"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advTrait"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
-      <!-- …Ideal, Bond, Flaw -->
+      <div>
+        <label class="dark:text-gray-300">Ideal</label>
+        <select
+          id="advIdeal"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
+      </div>
+      <div>
+        <label class="dark:text-gray-300">Bond</label>
+        <select
+          id="advBond"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
+      </div>
+      <div>
+        <label class="dark:text-gray-300">Flaw</label>
+        <select
+          id="advFlaw"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
+      </div>
     </section>
 
     <!-- 4) Appearance -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Hair, Eyes, Clothing… -->
       <div>
         <label class="dark:text-gray-300">Hair Style</label>
-        <select id="advHair"
-                class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                       border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+        <select
+          id="advHair"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
       </div>
-      <!-- …Eyes, Clothing -->
+      <div>
+        <label class="dark:text-gray-300">Eye Color</label>
+        <select
+          id="advEyes"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
+      </div>
+      <div>
+        <label class="dark:text-gray-300">Clothing Style</label>
+        <select
+          id="advClothing"
+          class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                 border p-2 rounded transition-colors duration-200 ease-in-out"
+        ></select>
+      </div>
     </section>
 
     <!-- 5) Hooks -->
     <section>
-      <label class="dark:text-gray-300">Back-story Hook</label>
-      <select id="advHook"
-              class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
-                     border p-2 rounded transition-colors duration-200 ease-in-out"></select>
+      <label class="block mb-1 dark:text-gray-300">Back-story Hook</label>
+      <select
+        id="advHook"
+        class="w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+               border p-2 rounded transition-colors duration-200 ease-in-out"
+      ></select>
     </section>
 
     <!-- Generate & Export -->
     <div class="flex items-center space-x-4">
-      <button id="advGenerateBtn"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded
-                     transition-colors duration-200">
+      <button
+        id="advGenerateBtn"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded
+               transition-colors duration-200"
+      >
         Generate NPC
       </button>
-      <button id="exportJsonBtn" disabled
-              class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed"
+      <button
+        id="exportJsonBtn"
+        disabled
+        class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed"
       >
         Export JSON
       </button>
-      <button id="exportPdfBtn" disabled
-              class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed"
+      <button
+        id="exportPdfBtn"
+        disabled
+        class="bg-gray-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed"
       >
         Export PDF
       </button>
     </div>
 
     <!-- Result Display -->
-    <div id="advResultCard"
-         class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded
-                transition-shadow duration-200 ease-in-out hover:shadow-lg">
-    </div>
+    <div
+      id="advResultCard"
+      class="mt-6 p-6 bg-gray-50 dark:bg-gray-700 rounded
+             transition-shadow duration-200 ease-in-out hover:shadow-lg"
+    ></div>
   </main>
 
   <!-- FOOTER -->
