@@ -1,6 +1,4 @@
 // scripts/generator.js
-
-// sanity check
 console.log("🔧 generator.js loaded!");
 
 // fetch helper
@@ -10,7 +8,7 @@ async function fetchJson(path) {
   return res.json();
 }
 
-// fill a <select> with a Random option + each item
+// populate a <select> (if present)
 function populate(id, items) {
   const sel = document.getElementById(id);
   if (!sel) return;
@@ -20,27 +18,24 @@ function populate(id, items) {
   ].join("");
 }
 
-// pick either the user’s choice or a random one
+// pick either selected.value or random option
 function pick(sel) {
+  if (!sel) return "N/A";
   if (sel.value) return sel.value;
-  const opts = Array.from(sel.options)
-    .map(o => o.value)
-    .filter(v => v);
+  const opts = Array.from(sel.options).map(o => o.value).filter(v => v);
   return opts[Math.floor(Math.random() * opts.length)];
 }
 
-// once DOM is ready...
 document.addEventListener("DOMContentLoaded", async () => {
-  const page = window.location.pathname.split("/").pop();
-  console.log("🔥 generator.js running on:", page);
+  const page = location.pathname.split("/").pop();
+  console.log("🔥 Running on:", page);
 
-  // page flags
-  const isNpcQuick   = page === "npc-general.html";
-  const isPcQuick    = page === "pc-general.html";
-  const isNpcAdv     = page === "npc-advanced.html";
-  const isPcAdv      = page === "pc-advanced.html";
+  const isNpcQuick = page === "npc-general.html";
+  const isPcQuick  = page === "pc-general.html";
+  const isNpcAdv   = page === "npc-advanced.html";
+  const isPcAdv    = page === "pc-advanced.html";
 
-  // always-needed pools
+  // core pools
   const [names, sexes, races, traits] = await Promise.all([
     fetchJson("/data/names.json"),
     fetchJson("/data/sexes.json"),
@@ -48,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     fetchJson("/data/traits.json")
   ]);
 
-  // QUICK (both NPC & PC use identical UI)
+  // QUICK NPC/PC
   if (isNpcQuick || isPcQuick) {
     populate("selName",  names);
     populate("selSex",   sexes);
@@ -57,29 +52,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("generateBtn").onclick = () => {
       const card = document.getElementById("resultCard");
-      const html = `
-        <h2 class="text-2xl font-bold dark:text-white">${pick(document.getElementById("selName"))}</h2>
+      card.innerHTML = `
+        <h2 class="text-2xl font-bold dark:text-white">
+          ${pick(document.getElementById("selName"))}
+        </h2>
         <ul class="list-disc pl-5 dark:text-gray-300">
-          <li><strong>Sex:</strong> ${pick(document.getElementById("selSex"))}</li>
+          <li><strong>Sex:</strong>  ${pick(document.getElementById("selSex"))}</li>
           <li><strong>Race:</strong> ${pick(document.getElementById("selRace"))}</li>
-          <li><strong>Trait:</strong> ${pick(document.getElementById("selTrait"))}</li>
+          <li><strong>Trait:</strong>${pick(document.getElementById("selTrait"))}</li>
         </ul>
       `;
-      card.innerHTML = html;
     };
-
-    return;  // done with quick
+    return; // done
   }
 
-  // ADVANCED (NPC & PC)
-  console.log("🔍 loading advanced pools...");
-
-  const [
-    classes, backgrounds,
-    ideals, bonds, flaws,
-    hair, eyes, clothing,
-    hooks, hdice, scores, alignments, skills
-  ] = await Promise.all([
+  // ADVANCED NPC or PC
+  console.log("🔍 loading advanced pools…");
+  const advancedFetches = [
     fetchJson("/data/classes.json"),
     fetchJson("/data/backgrounds.json"),
     fetchJson("/data/ideals.json"),
@@ -90,18 +79,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     fetchJson("/data/clothing.json"),
     fetchJson("/data/hooks.json"),
     fetchJson("/data/hit-dice.json"),
-    fetchJson("/data/ability-scores.json"),
-    fetchJson("/data/alignments.json"),
-    fetchJson("/data/skills.json")
-  ]);
+    fetchJson("/data/ability-scores.json")
+  ];
 
-  // populate selects
+  // add PC‐only pools
+  if (isPcAdv) {
+    advancedFetches.push(
+      fetchJson("/data/alignments.json"),
+      fetchJson("/data/skills.json")
+    );
+  }
+
+  const results = await Promise.all(advancedFetches);
+  const [
+    classes, backgrounds,
+    ideals, bonds, flaws,
+    hair, eyes, clothing,
+    hooks, hdice, scores,
+    alignment, skills
+  ] = results;
+
+  // populate all (guarded)
   populate("advName",      names);
   populate("advSex",       sexes);
   populate("advRace",      races);
   populate("advClass",     classes);
-  populate("advAlignment", alignments);
-  populate("advBackground",backgrounds);
   populate("advHD",        hdice);
   populate("advTrait",     traits);
   populate("advIdeal",     ideals);
@@ -111,27 +113,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   populate("advEyes",      eyes);
   populate("advClothing",  clothing);
   populate("advHook",      hooks);
-  // (for PC only—will exist on pc-advanced.html)
-  populate("advSkill1",    skills);
-  populate("advSkill2",    skills);
 
-  // GENERATE button
+  if (isPcAdv) {
+    populate("advAlignment", alignment);
+    populate("advBackground", backgrounds);
+    populate("advSkill1", skills);
+    populate("advSkill2", skills);
+  }
+
+  // ADVANCED generate
   document.getElementById("advGenerateBtn").onclick = () => {
     const data = {
       Name:      pick(document.getElementById("advName")),
       Sex:       pick(document.getElementById("advSex")),
       Race:      pick(document.getElementById("advRace")),
       Class:     pick(document.getElementById("advClass")),
-      Alignment: pick(document.getElementById("advAlignment")),
-      Background:pick(document.getElementById("advBackground")),
       HitDice:   pick(document.getElementById("advHD")),
       HP:        document.getElementById("advHP")?.value || "N/A",
-      STR:       document.getElementById("statSTR")?.value || pick({ options: scores.map(s=>({value:s})) }),
-      DEX:       document.getElementById("statDEX")?.value || pick({ options: scores.map(s=>({value:s})) }),
-      CON:       document.getElementById("statCON")?.value || pick({ options: scores.map(s=>({value:s})) }),
-      INT:       document.getElementById("statINT")?.value || pick({ options: scores.map(s=>({value:s})) }),
-      WIS:       document.getElementById("statWIS")?.value || pick({ options: scores.map(s=>({value:s})) }),
-      CHA:       document.getElementById("statCHA")?.value || pick({ options: scores.map(s=>({value:s})) }),
+      STR:       document.getElementById("statSTR")?.value || pick({options: scores.map(s=>({value:s}))}),
+      DEX:       document.getElementById("statDEX")?.value || pick({options: scores.map(s=>({value:s}))}),
+      CON:       document.getElementById("statCON")?.value || pick({options: scores.map(s=>({value:s}))}),
+      INT:       document.getElementById("statINT")?.value || pick({options: scores.map(s=>({value:s}))}),
+      WIS:       document.getElementById("statWIS")?.value || pick({options: scores.map(s=>({value:s}))}),
+      CHA:       document.getElementById("statCHA")?.value || pick({options: scores.map(s=>({value:s}))}),
       Trait:     pick(document.getElementById("advTrait")),
       Ideal:     pick(document.getElementById("advIdeal")),
       Bond:      pick(document.getElementById("advBond")),
@@ -139,15 +143,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       Hair:      pick(document.getElementById("advHair")),
       Eyes:      pick(document.getElementById("advEyes")),
       Clothing:  pick(document.getElementById("advClothing")),
-      Hook:      pick(document.getElementById("advHook")),
-      // PC-only fields
-      ...(isPcAdv && {
-        Skill1: pick(document.getElementById("advSkill1")),
-        Skill2: pick(document.getElementById("advSkill2"))
-      })
+      Hook:      pick(document.getElementById("advHook"))
     };
 
-    // render
+    // PC‐only additions
+    if (isPcAdv) {
+      data.Alignment  = pick(document.getElementById("advAlignment"));
+      data.Background = pick(document.getElementById("advBackground"));
+      data.Skill1     = pick(document.getElementById("advSkill1"));
+      data.Skill2     = pick(document.getElementById("advSkill2"));
+    }
+
+    // render card
     let html = `<h2 class="text-2xl font-bold dark:text-white">${data.Name}</h2>`;
     html += `<ul class="list-disc pl-5 dark:text-gray-300">`;
     for (let [k,v] of Object.entries(data)) {
@@ -157,23 +164,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("advResultCard").innerHTML = html;
   };
 
-  // EXPORT JSON
+  // JSON export
   document.getElementById("exportJsonBtn")?.addEventListener("click", () => {
     const lis = document.querySelectorAll("#advResultCard li");
     const out = {};
     lis.forEach(li => {
-      const [key, val] = li.textContent.split(": ");
+      const [key,val] = li.textContent.split(": ");
       out[key] = val;
     });
     const blob = new Blob([JSON.stringify(out, null,2)], {type:"application/json"});
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
+    a.href    = URL.createObjectURL(blob);
     a.download = `${page.replace(".html","")}.json`;
     a.click();
     URL.revokeObjectURL(a.href);
   });
 
-  // PDF export placeholder
+  // PDF stub
   document.getElementById("exportPdfBtn")?.addEventListener("click", () => {
     alert("PDF export coming soon!");
   });
