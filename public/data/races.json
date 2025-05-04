@@ -1,12 +1,16 @@
 [
-    "Human",
-    "Elf",
-    "Dwarf",
-    "Halfling",
-    "Orc",
-    "Half-Orc",
-    "Tiefling",
-    "Gnome",
-    "Dragonborn"
-  ]
-  
+  "Dragonborn",
+  "Dwarf (Hill)",
+  "Dwarf (Mountain)",
+  "Elf (High)",
+  "Elf (Wood)",
+  "Elf (Drow)",
+  "Gnome (Forest)",
+  "Gnome (Rock)",
+  "Half-Elf",
+  "Half-Orc",
+  "Halfling (Lightfoot)",
+  "Halfling (Stout)",
+  "Human",
+  "Tiefling"
+]
