@@ -1,1 +1,9 @@
-populate("advTools", tools)
+[
+    "Artisan’s tools",
+    "Disguise kit",
+    "Forgery kit",
+    "Alchemist’s supplies",
+    "Thieves’ tools",
+    "Herbalism kit"
+  ]
+  

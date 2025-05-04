@@ -1,1 +1,11 @@
-populate("advSpells", spells)
+[
+    "Fire Bolt",
+    "Mage Armor",
+    "Healing Word",
+    "Eldritch Blast",
+    "Bless",
+    "Cure Wounds",
+    "Invisibility",
+    "Lightning Bolt"
+  ]
+  

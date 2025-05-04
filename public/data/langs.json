@@ -1,1 +1,15 @@
-populate("advLangs", langs)
+[
+    "Common",
+    "Dwarvish",
+    "Elvish",
+    "Giant",
+    "Gnomish",
+    "Goblin",
+    "Halfling",
+    "Orc",
+    "Draconic",
+    "Infernal",
+    "Celestial",
+    "Sylvan"
+  ]
+  
