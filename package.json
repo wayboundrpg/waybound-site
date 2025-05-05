@@ -1,29 +1,14 @@
 {
   "name": "waybound-site",
-  "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wayboundrpg/waybound-site.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wayboundrpg/waybound-site/issues"
-  },
-  "homepage": "https://github.com/wayboundrpg/waybound-site#readme",
-  "description": "",
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.4",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.4",
-    "vite": "^6.3.3"
+    "vite": "^6.3.1"
   }
 }
